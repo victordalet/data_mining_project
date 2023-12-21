@@ -49,9 +49,12 @@ class BinaryNeural:
 
     def get_score(self) -> float:
         score = 0
+        i = 0
         for i in tqdm(range(len(self.inputs))):
-            score += (self.predict(self.inputs[i]) - self.outputs[i]) ** 2
-        return score / len(self.inputs)
+            result = self.predict(self.inputs[i])
+            if int(result) == self.outputs[i]:
+                score += 1
+        return score / (i + 1)
 
     def save_weights_to_json_file(self) -> None:
         with open(self.path, 'w') as f:
