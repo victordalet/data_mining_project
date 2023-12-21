@@ -4,7 +4,6 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from binaryNeural import BinaryNeural
 import tensorflow as tf
-import csv as csv_write
 
 if __name__ == '__main__':
     gpus = tf.config.list_physical_devices('GPU')
