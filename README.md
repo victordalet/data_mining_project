@@ -10,8 +10,12 @@
 ## Launch the project
 
 ```bash
-py src/main.py
+py src/main.py True
 ```
+
+### Arguments
+- `True` : to use the show dataset with matplotlib
+- `False` : to train directly the model
 
 ## Lint 
 ```bash
