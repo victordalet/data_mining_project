@@ -14,6 +14,7 @@ class BinaryNeural:
         self.learning_rate: float = learning_rate
         self.weights: list[float] = []
         self.path: str = 'weights.json'
+
         self.init_weight()
 
     def init_weight(self):
@@ -30,10 +31,12 @@ class BinaryNeural:
             output += self.weights[i] * input[i]
         return self.sigmoid(output)
 
+
     def train(self) -> None:
         if not self.check_json_file_is_empty():
             print(self.get_score())
             return self.get_weights_in_json_file()
+          
         for _ in tqdm(range(self.nb_epoch)):
             for i in range(len(self.inputs)):
                 output = self.predict(self.inputs[i])

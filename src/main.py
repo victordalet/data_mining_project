@@ -13,12 +13,14 @@ if __name__ == '__main__':
         tf.config.set_visible_devices(gpus[0], 'GPU')
     else:
         print("No GPU found")
+
     csv = pd.read_csv("train.csv")
     data: list[list] = csv.values.tolist()
     label: list[str] = list(csv)
     inputs: list[list[int]] = []
     outputs: list[int] = []
     display_result: bool = sys.argv[1] == 'True'
+
     for d in data:
         inputs.append(d[1:-1])
         outputs.append(d[-1])
@@ -39,6 +41,7 @@ if __name__ == '__main__':
     data: list[list] = csv.values.tolist()
 
     """inputs: list[list[int]] = []
+
     for d in data:
         inputs.append(d[1:])
     for i in range(len(inputs)):
@@ -46,3 +49,4 @@ if __name__ == '__main__':
         writer = csv_write.writer(f)
         writer.writerow([int(data[i][0]), int(dwayne.predict(inputs[i]))])
         f.close()"""
+
