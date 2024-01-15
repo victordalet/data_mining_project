@@ -4,6 +4,7 @@ import matplotlib.pyplot as plt
 import pandas as pd
 from binaryNeural import BinaryNeural
 import tensorflow as tf
+import seaborn as sns
 
 if __name__ == '__main__':
     gpus = tf.config.list_physical_devices('GPU')
@@ -25,6 +26,10 @@ if __name__ == '__main__':
         outputs.append(d[-1])
 
     if display_result:
+        corr_df = csv.corr(method="pearson")
+        plt.figure(figsize=(8, 6))
+        sns.heatmap(corr_df, annot=True)
+        plt.show()
         for i in range(len(inputs[0])):
             array_temp = []
             for j in range(len(inputs)):
@@ -33,7 +38,7 @@ if __name__ == '__main__':
             plt.title(label[i])
             plt.show()
 
-    dwayne: BinaryNeural = BinaryNeural(inputs[:10000], outputs, 100, .01)
+    dwayne: BinaryNeural = BinaryNeural(inputs[:10000], outputs, 1000, .01)
     dwayne.train()
 
     csv = pd.read_csv("test.csv")
@@ -48,4 +53,3 @@ if __name__ == '__main__':
         writer = csv_write.writer(f)
         writer.writerow([int(data[i][0]), int(dwayne.predict(inputs[i]))])
         f.close()"""
-

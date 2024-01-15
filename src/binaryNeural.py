@@ -31,11 +31,11 @@ class BinaryNeural:
             output += self.weights[i] * input[i]
         return self.sigmoid(output)
 
-
     def train(self) -> None:
         if not self.check_json_file_is_empty():
+            self.get_weights_in_json_file()
             print(self.get_score())
-            return self.get_weights_in_json_file()
+            return
           
         for _ in tqdm(range(self.nb_epoch)):
             for i in range(len(self.inputs)):
